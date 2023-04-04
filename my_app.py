@@ -16,13 +16,8 @@ st.title('Photofilter for Ecosia')
 st.text('Upload Images')
 
 @st.cache(allow_output_mutation=True)
-def load_model():
-    url = 'https://github.com/Jaimboh/ecossia_photofilter/raw/main/rs_rf.pkl'
-    response = requests.get(url)
-    model = pickle.load(io.BytesIO(response.content))
-    return model
 
-model = load_model()
+model=pickle.load(open('rs_rf.pkl','rb'))
 
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
 
