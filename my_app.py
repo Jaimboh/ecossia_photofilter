@@ -7,18 +7,19 @@ import streamlit as st
 import pickle
 import pandas as pd
 import os
+import requests
 
 st.title('Photofilter for Ecosia')
 st.text('Upload Images')
 
-# Get the absolute path to the directory containing the script
-script_dir = os.path.dirname(os.path.abspath(__file__))
+@st.cache(allow_output_mutation=True)
+def load_model():
+    url = 'https://github.com/Jaimboh/ecossia_photofilter/raw/main/rs_rf.pkl'
+    response = requests.get(url)
+    model = pickle.loads(response.content)
+    return model
 
-# Construct the path to the pickle file
-pickle_path = os.path.join(script_dir, "rs_rf.pkl")
-
-# Load the pickle file using the absolute path to the file
-model = pickle.load(open(pickle_path, "rb"))
+model = load_model()
 
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
 
