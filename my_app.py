@@ -6,11 +6,17 @@ from PIL import Image
 import streamlit as st
 import pickle
 import pandas as pd
+import os
 
 st.title('Photofilter for Ecosia')
 st.text('Upload Images')
 
-model=pickle.load(open('rs_rf.pkl','rb'))
+# set the absolute path to the pickle file
+pickle_path = "C:/Users/Jaimboh/Desktop/sample_project_1/rs_rf.pkl"
+
+# load the pickle file using the absolute path to the file
+model = pickle.load(open(pickle_path, 'rb'))
+
 
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
 
