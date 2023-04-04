@@ -11,11 +11,14 @@ import os
 st.title('Photofilter for Ecosia')
 st.text('Upload Images')
 
-# set the absolute path to the pickle file
-pickle_path = "C:/Users/Jaimboh/Desktop/sample_project_1/rs_rf.pkl"
+# Get the absolute path to the directory containing the script
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
-# load the pickle file using the absolute path to the file
-model = pickle.load(open(pickle_path, 'rb'))
+# Construct the path to the pickle file
+pickle_path = os.path.join(script_dir, "rs_rf.pkl")
+
+# Load the pickle file using the absolute path to the file
+model = pickle.load(open(pickle_path, "rb"))
 
 
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
