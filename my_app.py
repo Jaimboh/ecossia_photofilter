@@ -20,7 +20,6 @@ pickle_path = os.path.join(script_dir, "rs_rf.pkl")
 # Load the pickle file using the absolute path to the file
 model = pickle.load(open(pickle_path, "rb"))
 
-
 uploaded_files = st.file_uploader("Choose images...", type="jpg", accept_multiple_files=True)
 
 if uploaded_files:
