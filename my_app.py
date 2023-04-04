@@ -17,9 +17,9 @@ st.text('Upload Images')
 
 @st.cache(allow_output_mutation=True)
 def load_model():
-    model_file = 'rs_rf.pkl'
-    with open(model_file, 'rb') as f:
-        model = pickle.load(f)
+    url = 'https://github.com/Jaimboh/ecossia_photofilter/raw/main/rs_rf.pkl'
+    response = requests.get(url)
+    model = pickle.load(io.BytesIO(response.content))
     return model
 
 model = load_model()
