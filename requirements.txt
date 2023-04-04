@@ -2,5 +2,5 @@ numpy
 scikit-image
 Pillow
 streamlit
-scikit-learn
 pandas
+tensorflow
