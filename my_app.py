@@ -8,6 +8,9 @@ import pickle
 import pandas as pd
 import os
 import requests
+import joblib
+import io
+
 
 st.title('Photofilter for Ecosia')
 st.text('Upload Images')
@@ -16,7 +19,7 @@ st.text('Upload Images')
 def load_model():
     url = 'https://github.com/Jaimboh/ecossia_photofilter/raw/main/rs_rf.pkl'
     response = requests.get(url)
-    model = pickle.loads(response.content)
+    model = joblib.load(io.BytesIO(response.content))
     return model
 
 model = load_model()
